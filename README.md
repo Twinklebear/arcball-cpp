@@ -1,6 +1,6 @@
 # Arcball Camera
 
-A [Shoemake arcball camera](http://www.talisman.org/~erlkonig/misc/shoemake92-arcball.pdf)
+A [Shoemake Arcball camera](http://www.talisman.org/~erlkonig/misc/shoemake92-arcball.pdf)
 in C++ which uses GLM for math. The camera
 works in a right handed coordinate system for OpenGL. The
 camera takes inputs from your application in normalized device
