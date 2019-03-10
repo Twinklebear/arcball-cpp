@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/ext.hpp>
 
 /* A simple arcball camera that moves around the camera's focal point.
  * The mouse inputs to the camera should be in normalized device coordinates,
