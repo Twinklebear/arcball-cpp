@@ -127,6 +127,7 @@ void run_app(const glm::vec3 &eye, const glm::vec3 &center, const glm::vec3 &up)
 
     glm::mat4 proj = glm::perspective(
         glm::radians(65.f), static_cast<float>(win_width) / win_height, 0.1f, 100.f);
+    glm::mat4 proj_inv = glm::inverse(proj);
 
     GLuint vao;
     glCreateVertexArrays(1, &vao);
@@ -168,7 +169,10 @@ void run_app(const glm::vec3 &eye, const glm::vec3 &center, const glm::vec3 &up)
                     if (event.motion.state & SDL_BUTTON_LMASK) {
                         camera.rotate(prev_mouse, cur_mouse);
                     } else if (event.motion.state & SDL_BUTTON_RMASK) {
-                        camera.pan(cur_mouse - prev_mouse);
+                        glm::vec2 dxy = cur_mouse - prev_mouse;
+                        glm::vec4 dxy4 = proj_inv * glm::vec4(dxy.x, dxy.y, 0,1);
+                        
+                        camera.pan(glm::vec2(dxy4.x, dxy4.y));
                     }
                 }
                 prev_mouse = cur_mouse;
